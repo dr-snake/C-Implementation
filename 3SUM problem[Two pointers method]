@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+#define lli long long
+#define MAX 1000005
+
+using namespace std;
+
+lli A[MAX];
+int main()
+{
+    int n;
+    cin>>n;
+    for( int i = 0; i < n; i ++ )
+        cin >> A[i];
+    sort(A,A+n);
+    int M;
+    cin >> M;
+    int l = 0, r = n-1;
+    int a,b,c;
+    bool f=false;
+    for(int i=0;i<n-3/*&&!f*/;i++)
+    {
+        a=A[i];
+        l=i+1;
+        r=n-1;
+        while(l<r)
+        {
+            b=A[l];
+            c=A[r];
+            if(a+b+c==M)
+            {
+                cout<<a<<" "<<b<<" "<<c<<endl;
+                //f=true;
+                break;
+            }
+            else if(a+b+c>M)
+                r--;
+            else l--;
+        }
+    }
+    return 0;
+}
